@@ -62,39 +62,47 @@ public class AtaReport {
 	public List<ParticipanteReport> getParticipantesMembros() {
 		return participantesMembros;
 	}
+        
+        
+        
+        //Os metodos foram separados e a variavel local substituida pelo novo método.
+        
 	public String getStringParticipantesMembros(){
 		if((this.getParticipantesMembros() != null) && (this.getParticipantesMembros().size() > 0)){
-			String retorno = this.getParticipantesMembros().get(0).getNome();
-			
-			for(int i = 1; i < this.getParticipantesMembros().size(); i++){
-				retorno += ", " + this.getParticipantesMembros().get(i).getNome();
-			}
-			
-			retorno += ".";
-			
-			return retorno;
+		
+			return getmembros(this.getParticipantesMembros());
 		}else{
 			return "";
 		}
 	}
+        
+        //Os metodos foram separados e a variavel local substituida pelo novo método.
+        private  String getmembros(List<ParticipanteReport> participantes){
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < participantes.size(); i++) {
+        sb = sb.append(", ");
+        sb = sb.append(participantes.get(i).getNome());
+    }
+ 
+    sb = sb.append(".");
+    
+    return sb.toString();
+}
+        
+        //Os metodos foram separados e a variavel local substituida pelo novo método.
 	public void setParticipantesMembros(List<ParticipanteReport> participantesMembros) {
 		this.participantesMembros = participantesMembros;
 	}
 	public String getStringDemaisParticipantes(){
 		if((this.getDemaisParticipantes() != null) && (this.getDemaisParticipantes().size() > 0)){
-			String retorno = this.getDemaisParticipantes().get(0).getNome();
-			
-			for(int i = 1; i < this.getDemaisParticipantes().size(); i++){
-				retorno += ", " + this.getDemaisParticipantes().get(i).getNome();
-			}
-			
-			retorno += ".";
-			
-			return retorno;
+			return getmembros(this.getDemaisParticipantes());
 		}else{
 			return "";
 		}
 	}
+        
+        
+        
 	public List<ParticipanteReport> getDemaisParticipantes() {
 		return demaisParticipantes;
 	}

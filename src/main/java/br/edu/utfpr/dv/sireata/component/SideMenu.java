@@ -27,6 +27,8 @@ import br.edu.utfpr.dv.sireata.window.EditarAtaWindow;
 import br.edu.utfpr.dv.sireata.window.EditarSenhaWindow;
 import br.edu.utfpr.dv.sireata.window.EditarUsuarioWindow;
 import br.edu.utfpr.dv.sireata.window.SobreWindow;
+import com.mysql.cj.Session;
+import model.dao.UsuarioDAO;
 
 public class SideMenu extends CustomComponent {
 	
@@ -104,8 +106,9 @@ public class SideMenu extends CustomComponent {
 		boolean podeCriarAta = false;
 		
 		try {
-			UsuarioBO bo = new UsuarioBO();
-			podeCriarAta = bo.podeCriarAta(Session.getUsuario().getIdUsuario());
+                    // Ao invez de chamar o metodo "podeCriarAta" da classe "UsuarioBO", o mesmo metodo pode ser chamado diretamente pela classe "UsuarioDTO", evitando redundancias.
+			UsuarioDAO dao = new UsuarioDAO();
+			podeCriarAta = dao.podeCriarAta(Session.getUsuario().getIdUsuario());
 		} catch (Exception e) {
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 		}

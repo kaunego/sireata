@@ -238,6 +238,11 @@ public class UsuarioBO {
 		return dao.buscarEmails(ids);
 	}
 	
+        
+        
+        //Metodo Desnecessario;
+        
+        /**
 	public boolean podeCriarAta(int idUsuario) throws Exception{
 		try {
 			UsuarioDAO dao = new UsuarioDAO();
@@ -249,5 +254,5 @@ public class UsuarioBO {
 			throw new Exception(e.getMessage());
 		}
 	}
-	
+	**/
 }
